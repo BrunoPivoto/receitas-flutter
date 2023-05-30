@@ -32,19 +32,14 @@ class _MyAppState extends State<MyApp> {
         final filterLactose = settings.isLactoseFree && !meal.isLactoseFree;
         final filterVegan = settings.isVegan && !meal.isVegan;
         final filterVegetarian = settings.isVegetarian && !meal.isVegetarian;
-        return !filterGluten &&
-            !filterLactose &&
-            !filterVegan &&
-            !filterVegetarian;
+        return !filterGluten && !filterLactose && !filterVegan && !filterVegetarian;
       }).toList();
     });
   }
 
   void _toggleFavorite(Meal meal) {
     setState(() {
-      _favoriteMeals.contains(meal)
-          ?{ _favoriteMeals.remove(meal)}
-          : _favoriteMeals.add(meal);
+      _favoriteMeals.contains(meal) ? {_favoriteMeals.remove(meal)} : _favoriteMeals.add(meal);
     });
   }
 
@@ -55,6 +50,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'DeliMeals',
       theme: ThemeData(
           primarySwatch: Colors.pink,
@@ -72,8 +68,8 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.CATEGORIES_MEALS: (context) => CategoriesMealsScreen(
               meals: _availableMeals,
             ),
-        AppRoutes.MEAL_DETAIL: (context) => MealDetailScreen(
-            onToggleFavorite: _toggleFavorite, isFavorite: _isFavorite),
+        AppRoutes.MEAL_DETAIL: (context) =>
+            MealDetailScreen(onToggleFavorite: _toggleFavorite, isFavorite: _isFavorite),
         AppRoutes.SETTINGS: (context) => SettingsScreen(settings, _filterMeals),
       },
     );
