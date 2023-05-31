@@ -1,5 +1,5 @@
 # Receitas Flutter
- Aplicativo desenvolvido durante curso de Flutter para acessar receitas com filtros.
+ Aplicativo desenvolvido durante curso de Flutter para acessar receitas com filtros, navegção entre telas e favoritos.
 
 ---
 
